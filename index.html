@@ -46,20 +46,20 @@
 				<div class="form-group">
 					<label class="font-weight-bold"> Confirm Password: </label>
 					<input type="password" name="conpass" class="form-control" id="conpass" autocomplete="off">
-					<span id="confrmpasserror" class="text-danger font-weight-bold"> </span>
+					<span id="confrmpasserror" class="text-danger font-weight-bold"></span>
 				</div>
 
 				<div class="form-group">
 					<label class="font-weight-bold"> Mobile Number: </label>
 					<input type="text" name="mobile" class="form-control" id="mobileNumber" autocomplete="off">
-					<span id="mobileerror" class="text-danger font-weight-bold"> </span> <br>
+					<span id="mobileerror" class="text-danger font-weight-bold"></span>
                     <span id="" class="text-danger font-weight-light"> * Must Be Bangladeshi Mobile Number</span><br>
 
 				</div>
                 <div class="form-group">
 					<label class="font-weight-bold"> Zip Code: </label>
 					<input type="text" name="zipcode" class="form-control" id="zipcode" autocomplete="off">
-					<span id="ziperror" class="text-danger font-weight-bold"> </span><br>
+					<span id="ziperror" class="text-danger font-weight-bold"> </span>
                     <span id="" class="text-danger font-weight-light"> * Must Be Bangladeshi Zip Code</span>
 				</div>
 
@@ -127,7 +127,7 @@
                 document.getElementById('mobileerror').innerHTML ="";
             }
             else {
-                document.getElementById('mobileerror').innerHTML = "Mobile number is Invalid";
+                document.getElementById('mobileerror').innerHTML = `"Mobile number is Invalid"<br>` ;
                 return false;
             }
            
@@ -136,7 +136,7 @@
                 document.getElementById('ziperror').innerHTML ="";
             }
             else {
-                document.getElementById('ziperror').innerHTML = "Zip is Invalid";
+                document.getElementById('ziperror').innerHTML = `"Zip is Invalid"<br>`;
                 return false;
 
             }   
