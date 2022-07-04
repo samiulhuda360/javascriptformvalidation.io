@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Form Validation</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1 class="text-white text-center font-weight-bold bg-success" style="font-size: 55px;"> Form Validation In JavaScript and Regex</h1>
+
+	<div class="container"><br>
+		
+		<div class="col-lg-6 m-auto d-block">
+			
+			<form action="#" onsubmit="return validation()" class="bg-light">
+				
+				<div class="form-group">
+					<label for="user" class="font-weight-bold"> Username: </label>
+					<input type="text" name="user" class="form-control" id="user" autocomplete="off">
+					<span id="usererror" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Password: </label>
+					<input  type="password" name="pass" class="form-control" id="pass" autocomplete="off">
+                    <span id="passerror" class="text-danger font-weight-bold"> </span>
+                    <span id="" class="text-danger font-weight-light"> * Password must have 8 Character Long.</span><br>
+                    <span id="" class="text-danger font-weight-light"> * Password must have 1 symbol (@,! etc).</span><br>
+                    <span id="" class="text-danger font-weight-light"> * Password must have 1 Uppercass letter.</span><br>
+                    <span id="" class="text-danger font-weight-light"> * Password must have 1 Number </span>
+
+					
+				</div>
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Confirm Password: </label>
+					<input type="password" name="conpass" class="form-control" id="conpass" autocomplete="off">
+					<span id="confrmpasserror" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Mobile Number: </label>
+					<input type="text" name="mobile" class="form-control" id="mobileNumber" autocomplete="off">
+					<span id="mobileerror" class="text-danger font-weight-bold"> </span> <br>
+                    <span id="" class="text-danger font-weight-light"> * Must Be Bangladeshi Mobile Number</span><br>
+
+				</div>
+                <div class="form-group">
+					<label class="font-weight-bold"> Zip Code: </label>
+					<input type="text" name="zipcode" class="form-control" id="zipcode" autocomplete="off">
+					<span id="ziperror" class="text-danger font-weight-bold"> </span><br>
+                    <span id="" class="text-danger font-weight-light"> * Must Be Bangladeshi Zip Code</span>
+				</div>
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Email: </label>
+					<input type="text" name="email" class="form-control" id="email" autocomplete="off">
+					<span id="emailerror" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<input type="submit" name="submit" value="submit" class="btn btn-success">
+
+
+			</form><br><br>
+
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+
+        function validation() { 
+
+            let username = document.getElementById('user').value;
+            let pass = document.getElementById('pass').value;
+            let compass = document.getElementById('conpass').value;
+            let mobile = document.getElementById('mobileNumber').value;
+            let zip = document.getElementById('zipcode').value;
+            let email = document.getElementById('email').value;
+
+            let usercheck = /^[a-zA-Z. ]{4,30}$/ ;
+            let passcheck = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/ ;
+            let emailcheck = /[A-Za-z0-9_.]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}/ ;
+            let mobilecheck = /^(\+88|0088)?(01){1}[3456789]{1}(\d){8}$/ ;
+            let zipcheck = /^[1-9][0-9]{3}$/ ;
+
+
+            if (usercheck.test(username)){
+                document.getElementById('usererror').innerHTML ="";
+            }
+            else {
+                document.getElementById('usererror').innerHTML = "Username is Invalid";
+                return false;
+
+            }
+
+            if (passcheck.test(pass)){
+                document.getElementById('passerror').innerHTML ="";
+            }
+            else {
+                document.getElementById('passerror').innerHTML = `"Password is Invalid" <br>`;
+                return false;
+                
+            }
+
+            if (compass.match(pass)){
+                document.getElementById('confrmpasserror').innerHTML ="";
+            }
+            else {
+                document.getElementById('confrmpasserror').innerHTML = "Password doesn't Match";
+                return false;
+
+            }
+
+            if (mobilecheck.test(mobile)){
+                document.getElementById('mobileerror').innerHTML ="";
+            }
+            else {
+                document.getElementById('mobileerror').innerHTML = "Mobile number is Invalid";
+                return false;
+            }
+           
+
+            if (zipcheck.test(zip)){
+                document.getElementById('ziperror').innerHTML ="";
+            }
+            else {
+                document.getElementById('ziperror').innerHTML = "Zip is Invalid";
+                return false;
+
+            }   
+            
+            if (emailcheck.test(email)){
+                document.getElementById('emailerror').innerHTML ="";
+            }
+            else {
+                document.getElementById('emailerror').innerHTML = "Email Id is Invalid";
+                return false;
+
+            }
+
+           
+
+            
+
+
+        }
+
+        
+
+	</script>
+
+</body>
+</html>
